@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Rambler's Life - Gear That Fuels Your Adventures</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2a2a2a;
+            --accent-primary: #64748b;
+            --accent-secondary: #475569;
+            --accent-light: #94a3b8;
+            --text-white: #ffffff;
+            --text-light: #e5e5e5;
+            --text-gray: #a3a3a3;
+            --border-dark: #404040;
+            --silver-blue: #64748b;
+            --steel-blue: #475569;
+            --light-blue: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: var(--text-white);
+            background: var(--primary-black);
+        }
+
+        .script-font {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 4px 20px rgba(100, 116, 139, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75px;
+        }
+
+        .logo {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-style: italic;
+            text-shadow: 0 0 20px rgba(100, 116, 139, 0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-primary);
+            text-shadow: 0 0 10px rgba(100, 116, 139, 0.5);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2364748b" fill-opacity="0.03" d="M0,64L48,85.3C96,107,192,149,288,160C384,171,480,149,576,128C672,107,768,85,864,90.7C960,96,1056,128,1152,128C1248,128,1344,96,1392,80L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') top/cover no-repeat;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(100, 116, 139, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-30px, -30px) rotate(120deg); }
+            66% { transform: translate(30px, -60px) rotate(240deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(100, 116, 139, 0.1);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            color: var(--accent-primary);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-primary) 50%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(100, 116, 139, 0.3);
+        }
+
+        .hero-tagline {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .adventure-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-dark);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .adventure-type {
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .adventure-type:hover {
+            transform: translateY(-5px);
+        }
+
+        .adventure-type::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
+        }
+
+        .adventure-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .adventure-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .adventure-desc {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--steel-blue) 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(100, 116, 139, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(100, 116, 139, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-white);
+            border: 2px solid rgba(100, 116, 139, 0.5);
+            backdrop-filter: blur(15px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(100, 116, 139, 0.1);
+            border-color: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(100, 116, 139, 0.2);
+        }
+
+        /* Adventure Vision Section */
+        .adventure-vision {
+            padding: 8rem 2rem;
+            background: var(--primary-dark);
+            position: relative;
+        }
+
+        .adventure-vision::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
+
+        .vision-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .vision-content h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3rem;
+            color: var(--text-white);
+            margin-bottom: 2rem;
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        .vision-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .vision-quote {
+            background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), rgba(148, 163, 184, 0.1));
+            border-left: 4px solid var(--accent-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .vision-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-primary);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .vision-quote p {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-white);
+            margin-left: 2rem;
+        }
+
+        .vision-visual {
+            position: relative;
+        }
+
+        .vision-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            height: 500px;
+        }
+
+        .vision-item {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .vision-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(100, 116, 139, 0.2);
+        }
+
+        .vision-item:first-child {
+            grid-row: 1 / 3;
+        }
+
+        .vision-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(100, 116, 139, 0.1) 0%, 
+                rgba(26, 26, 26, 0.8) 50%, 
+                rgba(148, 163, 184, 0.1) 100%);
+        }
+
+        .vision-icon {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .vision-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .vision-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Gear Categories Section */
+        .gear-categories {
+            padding: 8rem 2rem;
+            background: var(--primary-black);
+        }
+
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: rgba(100, 116, 139, 0.1);
+            color: var(--accent-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(100, 116, 139, 0.3);
+        }
+
+        .section-title {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3.5rem;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(100, 116, 139, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(100, 116, 139, 0.2);
+        }
+
+        .category-card:hover::after {
+            width: 150px;
+            height: 150px;
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 25px rgba(100, 116, 139, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .card-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .card-features li::before {
+            content: '⚡';
+            font-size: 1.2rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .card-cta {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-cta:hover {
+            gap: 1rem;
+            color: var(--accent-light);
+            text-shadow: 0 0 10px rgba(100, 116, 139, 0.5);
+        }
+            letter-spacing: 0.5px;
+        }
+
+        .card-cta:hover {
+            gap: 1rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Promise Section */
+        .promise {
+            padding: 8rem 2rem;
+            background: var(--primary-dark);
+            position: relative;
+        }
+
+        .promise::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(100, 116, 139, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .promise-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .promise h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3rem;
+            color: var(--text-white);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .promise-item {
+            background: rgba(26, 26, 26, 0.6);
+            padding: 2.5rem;
+            border-radius: 18px;
+            border: 1px solid var(--border-dark);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .promise-item:hover {
+            transform: translateY(-8px);
+            background: rgba(100, 116, 139, 0.05);
+            border-color: rgba(100, 116, 139, 0.3);
+        }
+
+        .promise-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .promise-item:hover .promise-icon {
+            filter: grayscale(0%);
+        }
+
+        .promise-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .promise-item p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--primary-dark) 50%, var(--primary-black) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2364748b" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,96C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') center/cover no-repeat;
+        }
+
+        .newsletter-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter h2 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            background: linear-gradient(135deg, var(--text-white) 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .newsletter-tagline {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.25rem 1.75rem;
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+            background: rgba(26, 26, 26, 0.8);
+            color: var(--text-white);
+            font-size: 1.1rem;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--text-gray);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(26, 26, 26, 0.9);
+            box-shadow: 0 0 20px rgba(100, 116, 139, 0.2);
+        }
+
+        .newsletter-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .newsletter-benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .newsletter-benefit i {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-black);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 2.2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-dark);
+            border: 1px solid var(--border-dark);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(100, 116, 139, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-dark);
+            padding-top: 2rem;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .vision-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            
+            .vision-gallery {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .adventure-types {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .promise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                min-width: 100%;
+            }
+            
+            .newsletter-benefits {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .vision-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">A Rambler's Life</a>
+            <ul class="nav-menu">
+                <li><a href="#adventures" class="nav-link">Adventures</a></li>
+                <li><a href="#gear" class="nav-link">Gear Guide</a></li>
+                <li><a href="#promise" class="nav-link">Our Promise</a></li>
+                <li><a href="#newsletter" class="nav-link">Join</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-compass"></i>
+                Your next adventure starts here
+            </div>
+            
+            <h1>Gear That Fuels Adventures</h1>
+            
+            <p class="hero-tagline">From weekend escapes to epic expeditions</p>
+            
+            <p class="hero-description">
+                Discover the equipment that transforms ordinary trips into extraordinary adventures. 
+                Whether you're chasing mountain peaks or building a nomadic lifestyle, we'll help you 
+                find the gear that keeps you moving forward.
+            </p>
+            
+            <div class="adventure-types fade-in">
+                <div class="adventure-type">
+                    <span class="adventure-icon">🏔️</span>
+                    <div class="adventure-label">Mountain Explorer</div>
+                    <div class="adventure-desc">Ultralight gear for summit seekers</div>
+                </div>
+                <div class="adventure-type">
+                    <span class="adventure-icon">🌍</span>
+                    <div class="adventure-label">Digital Nomad</div>
+                    <div class="adventure-desc">Tech that travels everywhere</div>
+                </div>
+                <div class="adventure-type">
+                    <span class="adventure-icon">🎒</span>
+                    <div class="adventure-label">Weekend Warrior</div>
+                    <div class="adventure-desc">Quick escapes, maximum impact</div>
+                </div>
+                <div class="adventure-type">
+                    <span class="adventure-icon">📸</span>
+                    <div class="adventure-label">Adventure Creator</div>
+                    <div class="adventure-desc">Capture every epic moment</div>
+                </div>
+                <div class="adventure-type">
+                    <span class="adventure-icon">✈️</span>
+                    <div class="adventure-label">Adventure Aviator</div>
+                    <div class="adventure-desc">Gear for pilots who chase horizons</div>
+                </div>
+                <div class="adventure-type">
+                    <span class="adventure-icon">🏍️</span>
+                    <div class="adventure-label">Road Wanderlust</div>
+                    <div class="adventure-desc">Motorcycle, 4x4, and vehicle adventures</div>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#gear" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Find Your Gear
+                </a>
+                <a href="#adventures" class="btn btn-secondary">
+                    <i class="fas fa-map"></i>
+                    Explore Adventures
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adventure Vision Section -->
+    <section class="adventure-vision fade-in" id="adventures">
+        <div class="vision-container">
+            <div class="vision-content">
+                <h2>Every adventure begins with a single step...</h2>
+                <p class="vision-text">
+                    Maybe you've been dreaming of that multi-day trek through remote mountains. Or perhaps you're 
+                    ready to build a location-independent lifestyle that lets you work from anywhere. Maybe you just 
+                    want to escape the routine and rediscover what makes you feel alive.
+                </p>
+                <p class="vision-text">
+                    Whatever adventure is calling you, the right gear can be the difference between a struggle and 
+                    a story you'll tell for years. We're here to help you find equipment that doesn't just work—it 
+                    enables the experiences you've been waiting for.
+                </p>
+                
+                <div class="vision-quote">
+                    <p>
+                        The best adventures happen when you're prepared for anything, but not weighed down by everything.
+                    </p>
+                </div>
+                
+                <p class="vision-text">
+                    From ultralight backpacking essentials that won't slow you down to tech gear that keeps you 
+                    productive on the road, we curate recommendations that turn adventure dreams into adventure reality.
+                </p>
+            </div>
+            
+            <div class="vision-visual slide-up">
+                <div class="vision-gallery">
+                    <div class="vision-item">
+                        <div class="vision-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <div class="vision-title">Epic Trails Await</div>
+                        <div class="vision-subtitle">Ultralight gear for boundless exploration</div>
+                    </div>
+                    <div class="vision-item">
+                        <div class="vision-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="vision-title">Nomadic Freedom</div>
+                        <div class="vision-subtitle">Work from anywhere</div>
+                    </div>
+                    <div class="vision-item">
+                        <div class="vision-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <div class="vision-title">Capture Magic</div>
+                        <div class="vision-subtitle">Document your journey</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gear Categories Section -->
+    <section class="gear-categories fade-in" id="gear">
+        <div class="categories-container">
+            <div class="section-header">
+                <span class="section-badge">Gear Categories</span>
+                <h2 class="section-title">Adventure-Ready Equipment</h2>
+                <p class="section-subtitle">
+                    Carefully curated gear that enhances your adventures without holding you back
+                </p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card scale-in">
+                    <div class="card-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="card-title">Ultralight Adventures</h3>
+                    <p class="card-subtitle">Go further with less weight</p>
+                    
+                    <p class="card-description">
+                        Transform your hiking experience with gear that prioritizes performance over pounds. 
+                        From featherweight shelters to efficient cooking systems, discover equipment that lets 
+                        you focus on the journey, not the load on your back.
+                    </p>
+                    
+                    <ul class="card-features">
+                        <li>Backpacks that carry everything but feel like nothing</li>
+                        <li>Shelters that withstand storms yet pack impossibly small</li>
+                        <li>Sleep systems that guarantee rest anywhere</li>
+                        <li>Cooking gear that weighs ounces, not pounds</li>
+                        <li>Navigation tools for when the trail disappears</li>
+                    </ul>
+                    
+                    <a href="#" class="card-cta">
+                        Explore Ultralight
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="category-card scale-in">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="card-title">Digital Nomad Essentials</h3>
+                    <p class="card-subtitle">Productivity that travels</p>
+                    
+                    <p class="card-description">
+                        Build a mobile office that works from mountain cafes to beach co-working spaces. 
+                        Discover tech gear and accessories that keep you connected, productive, and earning 
+                        no matter where your wanderlust takes you.
+                    </p>
+                    
+                    <ul class="card-features">
+                        <li>Portable tech setups that work everywhere</li>
+                        <li>Power solutions for off-grid productivity</li>
+                        <li>Travel-proof protection for expensive gear</li>
+                        <li>Connectivity tools for remote locations</li>
+                        <li>Organization systems for constant movement</li>
+                    </ul>
+                    
+                    <a href="#" class="card-cta">
+                        Nomad Setup
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promise Section -->
+    <section class="promise fade-in" id="promise">
+        <div class="promise-container">
+            <h2>How we choose gear</h2>
+            
+            <div class="promise-grid">
+                <div class="promise-item slide-up">
+                    <div class="promise-icon">🎯</div>
+                    <h3>Adventure-Tested</h3>
+                    <p>We research gear through real-world conditions and user experiences, not marketing claims. Every recommendation proves itself in the wild.</p>
+                </div>
+                
+                <div class="promise-item slide-up">
+                    <div class="promise-icon">💡</div>
+                    <h3>Smart Curation</h3>
+                    <p>We cut through the noise to highlight gear that actually matters. Quality over quantity, function over flashiness.</p>
+                </div>
+                
+                <div class="promise-item slide-up">
+                    <div class="promise-icon">🌟</div>
+                    <h3>All Adventure Levels</h3>
+                    <p>From weekend warriors to seasoned explorers, we feature gear for every stage of your adventure journey.</p>
+                </div>
+                
+                <div class="promise-item slide-up">
+                    <div class="promise-icon">💰</div>
+                    <h3>Budget Conscious</h3>
+                    <p>Great adventures don't require trust funds. We highlight gear that delivers maximum value, from budget finds to worthwhile splurges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter fade-in" id="newsletter">
+        <div class="newsletter-container">
+            <h2>Start Your Next Adventure</h2>
+            <p class="newsletter-tagline">
+                Get curated gear recommendations, adventure inspiration, and insider tips delivered to your inbox. 
+                Plus exclusive access to detailed buying guides and member-only deals.
+            </p>
+            
+            <form class="newsletter-form" id="newsletterForm">
+                <input 
+                    type="email" 
+                    class="newsletter-input" 
+                    placeholder="your.email@adventure.com" 
+                    required
+                    name="email"
+                >
+                <button type="submit" class="btn btn-primary">
+                    Join Adventure
+                    <i class="fas fa-compass"></i>
+                </button>
+            </form>
+
+            <div class="newsletter-benefits">
+                <div class="newsletter-benefit">
+                    <i class="fas fa-search"></i>
+                    Curated gear finds
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Adventure inspiration
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-tag"></i>
+                    Exclusive deals
+                </div>
+                <div class="newsletter-benefit">
+                    <i class="fas fa-times"></i>
+                    Unsubscribe anytime
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>A Rambler's Life</h3>
+                <p>
+                    Gear recommendations for every adventure. From ultralight backpacking to digital nomad life, 
+                    we help you find equipment that enhances your journeys and enables your dreams.
+                </p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Affiliate Disclosure</a>
+                    <a href="#">Contact</a>
+                </div>
+                <p>&copy; 2025 A Rambler's Life. Adventure awaits—gear up responsibly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced navbar
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (scrollTop > lastScrollTop && scrollTop > 300) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 75;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-up, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = this.querySelector('input[type="email"]');
+            const submitButton = this.querySelector('button[type="submit"]');
+            const email = emailInput.value;
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Adventure requires a valid email address! 🧭', 'error');
+                return;
+            }
+            
+            const originalHTML = submitButton.innerHTML;
+            submitButton.innerHTML = '<i class="fas fa-compass fa-spin"></i> Preparing...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                submitButton.innerHTML = '<i class="fas fa-check"></i> Adventure awaits!';
+                submitButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                emailInput.value = '';
+                
+                showMessage('🎉 Welcome to the adventure! Check your inbox for your first gear guide.', 'success');
+                
+                setTimeout(() => {
+                    submitButton.innerHTML = originalHTML;
+                    submitButton.disabled = false;
+                    submitButton.style.background = '';
+                }, 4000);
+            }, 1500);
+        });
+
+        // Notification system
+        function showMessage(message, type = 'info') {
+            const notification = document.createElement('div');
+            const bgColor = type === 'error' ? 'rgba(239, 68, 68, 0.95)' : 'rgba(16, 185, 129, 0.95)';
+            const borderColor = type === 'error' ? '#ef4444' : '#10b981';
+            
+            notification.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: ${bgColor};
+                    color: white;
+                    padding: 1.25rem 1.75rem;
+                    border-radius: 15px;
+                    border-left: 4px solid ${borderColor};
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                    z-index: 10000;
+                    transform: translateX(100%);
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    max-width: 350px;
+                    font-weight: 500;
+                    backdrop-filter: blur(10px);
+                ">
+                    ${message}
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.firstElementChild.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.firstElementChild.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 400);
+            }, 6000);
+        }
+
+        // Enhanced card interactions
+        document.querySelectorAll('.category-card, .promise-item, .adventure-type').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Vision gallery interactions
+        document.querySelectorAll('.vision-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.08) rotate(1deg)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Parallax effects
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            
+            // Hero parallax
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Performance optimization
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedScroll = debounce(() => {
+            // Heavy scroll operations here if needed
+        }, 16);
+
+        window.addEventListener('scroll', debouncedScroll);
+    </script>
+</body>
+</html>
